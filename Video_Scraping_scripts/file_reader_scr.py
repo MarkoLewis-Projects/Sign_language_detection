@@ -111,6 +111,7 @@ for file, box in zip(files,boxes):
     processed_vid = load_video(path = file, ROI = box)
     
     print(processed_vid.shape)
+    out.release() 
     
     # fourcc = cv2.VideoWriter_fourcc('M','J','P','G')
     # fps = 30
@@ -126,5 +127,5 @@ for file, box in zip(files,boxes):
     
     
 
-out.release()    
+   
     
