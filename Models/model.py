@@ -1,25 +1,19 @@
-from keras.models import Sequential
-from keras.layers.core import Dense, Dropout, Flatten, Lambda
-from keras.layers.convolutional import Conv3D, MaxPooling3D, ZeroPadding3D
-from keras.optimizers import SGD
-import keras.backend as K
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout, Flatten, Lambda
+from tensorflow.keras.layers import Conv3D, MaxPooling3D, ZeroPadding3D
+#from tensorflow.keras.optimizers import SGD
+import tensorflow.keras.backend as K
 
 #https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Tran_Learning_Spatiotemporal_Features_ICCV_2015_paper.pdf
 
 class model:
     
-    self.weights = 0
-    self.trainable = False
-    self.freeze_layer = 0
+    def __init__(self, weights, trainable = True, freeze_layer = 0):
     
-    
-	def __init__(self, weights, trainable = True, freeze_layer = 0, l2_norm = False):
-    
-        self.weights = None
+        self.weights = weights
         self.trainable = True
-        self.freeze_layer = 0
         
-    def make_model(self, Conv_kernel, input_shape):
+    def make_model(self, kernel, input_shape, freeze_layer):
         
         model = Sequential()
         
@@ -28,72 +22,72 @@ class model:
                     activation = 'relu', 
                     input_shape = input_shape, 
                     strides = (1, 1, 1), 
-                    name = 'Conv3D 1a', 
+                    name = 'Conv1', 
                     padding = 'same'))
-        model.add(MaxPooling3D(pool_size(1, 2, 2), 
-                        strides(1, 1, 2),
-                        name = 'MaxPool 1'
-                        padding = 'valid') 
+        model.add(MaxPooling3D(pool_size = (1, 2, 2), 
+                        strides = (1, 2, 2),
+                        name = 'Pool1',
+                        padding = 'valid'))
         
         #layer 2
         model.add(Conv3D(128, kernel, 
                     activation = 'relu',
                     strides = (1, 1, 1), 
-                    name = 'Conv3D 2a', 
+                    name = 'Conv2', 
                     padding = 'same'))
-        model.add(MaxPooling3D(pool_size(1, 2, 2), 
-                        strides(1, 2, 2),
-                        name = 'MaxPool 2'
-                        padding = 'valid') 
+        model.add(MaxPooling3D(pool_size = (2, 2, 2), 
+                        strides = (2, 2, 2),
+                        name = 'Pool2',
+                        padding = 'valid'))
                         
         #layer 3
         model.add(Conv3D(256, kernel, 
                     activation = 'relu', 
                     strides = (1, 1, 1), 
-                    name = 'Conv3D 3a', 
+                    name = 'Conv3a', 
                     padding = 'same'))
         model.add(Conv3D(256, kernel, 
                     activation = 'relu',  
                     strides = (1, 1, 1), 
-                    name = 'Conv3D 3b', 
+                    name = 'Conv3b', 
                     padding = 'same'))
-        model.add(MaxPooling3D(pool_size(2, 2, 2), 
-                        strides(2, 2, 2),
-                        name = 'MaxPool 3'
-                        padding = 'valid')                 
+        model.add(MaxPooling3D(pool_size = (2, 2, 2), 
+                        strides = (2, 2, 2),
+                        name = 'Pool3',
+                        padding = 'valid'))                 
                         
         #layer 4
         model.add(Conv3D(512, kernel, 
                     activation = 'relu', 
                     strides = (1, 1, 1), 
-                    name = 'Conv3D 4a', 
+                    name = 'Conv4a', 
                     padding = 'same'))
         model.add(Conv3D(512, kernel, 
                     activation = 'relu',  
                     strides = (1, 1, 1), 
-                    name = 'Conv3D 4b', 
+                    name = 'Conv4b', 
                     padding = 'same'))
-        model.add(MaxPooling3D(pool_size(2, 2, 2), 
-                        strides(2, 2, 2),
-                        name = 'MaxPool 4'
-                        padding = 'valid')
+        model.add(MaxPooling3D(pool_size = (2, 2, 2), 
+                        strides = (2, 2, 2),
+                        name = 'Pool4',
+                        padding = 'valid'))
 
         #layer 5
         model.add(Conv3D(512, kernel, 
                     activation = 'relu', 
                     strides = (1, 1, 1), 
-                    name = 'Conv3D 5a', 
+                    name = 'Conv5a', 
                     padding = 'same'))
         model.add(Conv3D(512, kernel, 
                     activation = 'relu',  
                     strides = (1, 1, 1), 
-                    name = 'Conv3D 5b', 
+                    name = 'Conv5b', 
                     padding = 'same'))
         model.add(ZeroPadding3D(padding = (0, 1, 1)))
-        model.add(MaxPooling3D(pool_size(2, 2, 2), 
-                        strides(2, 2, 2),
-                        name = 'MaxPool 5'
-                        padding = 'valid')
+        model.add(MaxPooling3D(pool_size = (2, 2, 2), 
+                        strides = (2, 2, 2),
+                        name = 'Pool5',
+                        padding = 'valid'))
         model.add(Flatten())
         
         #Fully Connected Layers
@@ -113,21 +107,21 @@ class model:
             
         if freeze_layer > 0:
             for i in range(freeze_layer):
-            model.pop()
+                model.pop()
             
         for layer in model.layers:
-            layer.trainable = trainable
+            layer.trainable = self.trainable
         
         return model
         
-    def retrainable_model(self, Conv_kernel, input_shape)
+    def retrainable_model(self,kernel,input_shape):
         
-        model = make_model(weights = self.weights, freeze_layer = 3)
+         model = self.make_model(kernel = kernel, input_shape = input_shape, freeze_layer = 3)
+         
+         #Devide by magnitude squared
+         model.add(Lambda(lambda  x: K.l2_normalize(x, axis=1)))
+         
+         #could add pca
         
-        #Devide by magnitude squared
-        model.add(Lambda(lambda  x: K.l2_normalize(x, axis=1)))
-        
-        #could add pca
-        
-        return model   
+         return model   
     
