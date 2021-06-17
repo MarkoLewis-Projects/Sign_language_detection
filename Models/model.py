@@ -1,17 +1,17 @@
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Flatten, Lambda
 from tensorflow.keras.layers import Conv3D, MaxPooling3D, ZeroPadding3D
-#from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.optimizers import SGD
 import tensorflow.keras.backend as K
 
 #https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/Tran_Learning_Spatiotemporal_Features_ICCV_2015_paper.pdf
 
 class model:
     
-    def __init__(self, weights, trainable = True, freeze_layer = 0):
+    def __init__(self, weights, trainable = False, freeze_layer = 0):
     
         self.weights = weights
-        self.trainable = True
+        self.trainable = False
         
     def make_model(self, kernel, input_shape, freeze_layer):
         
@@ -109,19 +109,29 @@ class model:
             for i in range(freeze_layer):
                 model.pop()
             
-        for layer in model.layers:
-            layer.trainable = self.trainable
+        for layer in model.layers[:16]:
+            layer.trainable = False
+            
+        for layer in model.layers[16:]:
+            layer.trainable = True
         
         return model
-        
+    
     def retrainable_model(self,kernel,input_shape):
         
-         model = self.make_model(kernel = kernel, input_shape = input_shape, freeze_layer = 3)
+         old_model = self.make_model(kernel = kernel, input_shape = input_shape, freeze_layer = 3)
          
          #Devide by magnitude squared
+         model = Sequential()
+         model.add(old_model)
          model.add(Lambda(lambda  x: K.l2_normalize(x, axis=1)))
+         model.add(Dense(4096, activation = 'relu', name = 'fc7'))
+         model.add(Dropout(0.5))
+         model.add(Dense(298, activation='softmax', name='fc8'))
          
-         #could add pca
-        
+         optimizer = SGD(learning_rate=0.01)
+            
+         model.compile(optimiser = optimizer, loss = 'categorical_crossentropy', metrics = ['accuracy'])
+         
          return model   
     
