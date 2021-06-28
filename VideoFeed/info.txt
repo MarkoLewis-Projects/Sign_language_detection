@@ -1,1 +1,2 @@
 This folder contains the scripts required to pull a live feed from a users camera and form the data for the model to predict the letter being expressed
+It also contains the script for taking the photos of us signing letters in ASL
