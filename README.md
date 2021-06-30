@@ -48,5 +48,6 @@ Realtime example:
 
 Due to the computational intensity of high accuracy video recognition we have opted to complete this section at a later date, however preliminary work can be seen through video aquisition/preprocessing in conjunction with preliminary transfer learning attempts with both i3D from deepmind trained with the kinetics 400 dataset (https://arxiv.org/abs/1705.07750), as well as the C3D model which was trained on the Sports1M dataset (https://arxiv.org/abs/1412.0767).
 
-The presentation of our findings:
-https://www.youtube.com/watch?v=ooL-wb60CFE
+## Presentation
+
+You can view the presentation of our findings here: https://www.youtube.com/watch?v=ooL-wb60CFE
