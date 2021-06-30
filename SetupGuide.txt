@@ -1,0 +1,12 @@
+If you wish to use the script to capture yourself signing ASL you need to:
+
+1) Navigate to the 'VideoFeed' folder and download image_hand_predictor.py
+2) Navigate to the 'Models' folder and open 'model_param_file', this will take you to the google drive where you can download the model file needed to run the image_hand_predictor.py
+script
+3) Check that you have all the libraries needed to run the script (cv2,tensorflow,imutils,mediapipe,PIL,torch(pytorch))
+
+Additional Points:
+It is recommended that you use the predictor with a clear background to get the best performance and consistent outputs.
+
+The scripts were tested and are confirmed to work with the Spyder IDE but should work with other IDE's too. If you are having issues try changing how you are running the scripts and
+check that your system is allowing cv2 to open up an external window in which to capture your hand.
