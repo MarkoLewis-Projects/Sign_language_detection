@@ -46,3 +46,6 @@ Due to the computational intensity of high accuracy video recognition we have op
 
 The presentation of our findings:
 https://www.youtube.com/watch?v=ooL-wb60CFE
+
+
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
