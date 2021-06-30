@@ -23,7 +23,7 @@ The project can be described as a two part system where we looked into creating 
 
 ### ALPHABET LEVEL:
 
-This was the easier of the two tasks due the dimensionality, as classification with no regard for the temporal relations is a very light computation. Here we utilised both transfer learning and full learning utilising custom CNN architecture.  
+This was the easier of the two tasks due to the dimensionality, as classification with no regard for the temporal relations is a very light computation. Here we utilised both transfer learning and full learning utilising custom CNN architecture.  
 The dataset used for this was comprised of two main sections. Firstly the image dataset found on kaggle.com (https://www.kaggle.com/grassknoted/asl-alphabet), and secondly we generated our own sign language images utilising the openCV module.  
 The largest issue with this dataset was its lack of background and signer diversity dispite our efforts to diversify the data. This lead to suboptimal performance in real world scenarios making transfer learning the best solution due to models being previously trained on ImageNet and having an easier time recognising truely relevant features. 
 
