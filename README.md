@@ -17,11 +17,18 @@ Video_scraping_scripts - This contains the python scripts used to obtain the vid
 The project can be described as a two part system where we looked into creating two models that could work with one another to robustly recognise and translate ASL through both alphabet level and word level sign language.
 
 ALPHABET LEVEL:
-This was the easier of the two tasks due the the dimensionality, as classification with no regard for the temporal relations is a very light computation. Here we utilised both transfer learning and full learning utilising custom CNN architecture. The dataset used for this was comprised of two main sections. Firstly the image dataset found on kaggle.com (https://www.kaggle.com/grassknoted/asl-alphabet), and secondly we generated our own sign language images utilising the openCV module. 
-The largest issue with this dataset was its lack of background and signer diversity dispite our efforts to diversify the data. This lead to suboptimal performance in real world scenariosmaking transfer learning the best solution due to models being previously trained on ImageNet and having an easier time recognising truely relevant features. The pretrained models considered were: 
+This was the easier of the two tasks due the the dimensionality, as classification with no regard for the temporal relations is a very light computation. Here we utilised both transfer learning and full learning utilising custom CNN architecture. 
+The dataset used for this was comprised of two main sections. Firstly the image dataset found on kaggle.com (https://www.kaggle.com/grassknoted/asl-alphabet), and secondly we generated our own sign language images utilising the openCV module. 
+The largest issue with this dataset was its lack of background and signer diversity dispite our efforts to diversify the data. This lead to suboptimal performance in real world scenarios making transfer learning the best solution due to models being previously trained on ImageNet and having an easier time recognising truely relevant features. 
+
+The pretrained models considered were: 
+
 MobileNetV2 - Chosen for its light-weight architecture and mobile application compatibility.
+
 ResNet34 - Chosen for the amazing performance of residual networks in recent years and determined to have a worthy trade of processing time for prediction accuracy. 
+
 DenseNet201 - As a close relative of ResNet with fewer parameters DenseNet was another obvious consideration.
+
 Whilst all models performed compitently in when compared to the validation data we found that ResNet34 was superior in real world translation scenarios. Most model attempts were an initial pass and further finetuning is avalible, yet due to the nature of transfer learning we believe there will be no significant canges in the models rankings.
 
 WORD LEVEL:
