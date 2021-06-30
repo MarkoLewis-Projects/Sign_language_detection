@@ -40,9 +40,9 @@ The pretrained models considered were:
 
 Whilst all models performed compitently when compared to the validation data, we found that ResNet34 was superior in real world translation scenarios. Most modelling attempts were an initial pass and further finetuning is available, yet due to the nature of transfer learning we believe there will be no significant changes in ranking of these models.
 
-Realtime signing :)
+Realtime example:
 
-![alt text](https://github.com/MarkoLewis-Projects/Sign_language_detection/blob/main/hand_detection_clipped.gif "Resnet34 detection")
+![alt text](https://github.com/MarkoLewis-Projects/Sign_language_detection/blob/main/hand_detection_clipped.gif=300x300 "Resnet34 detection")
 
 ### WORD LEVEL:
 
