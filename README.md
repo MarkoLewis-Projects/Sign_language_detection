@@ -4,7 +4,7 @@ Lewis + Marko projects
 Detection algorithm for sign langauge
 
 ## Intro:
-Deafness and sign language are the largest and hardest to overcome language barriers in the modern world. In most cases it isnt feasible to "learn" or even attempt to bridge this gap through self-study. Here we aim to aid in crossing this gap through the creation of a lightweight and truely robust ASL(American Sign-Language) detection model that could take a live feed from a user's camera and translate word and alphabet level sign in real-time to english. The realisation of such a project would surely aid in day to day life in order to connect more people together through seemless conversation.
+Deafness and sign language are the largest and hardest to overcome language barriers in the modern world. In most cases it isn't feasible to "learn" or even attempt to bridge this gap through self-study. Here we aim to aid in crossing this gap through the creation of a lightweight and truely robust ASL(American Sign-Language) detection model that could take a live feed from a user's camera and translate word and alphabet level sign in real-time to english. The realisation of such a project would surely aid in day to day life in order to connect more people together through seemless conversation.
 
 The repository itself contains 3 main folders:
 
@@ -23,7 +23,7 @@ The project can be described as a two part system where we looked into creating 
 
 ### ALPHABET LEVEL:
 
-This was the easier of the two tasks due the the dimensionality, as classification with no regard for the temporal relations is a very light computation. Here we utilised both transfer learning and full learning utilising custom CNN architecture.  
+This was the easier of the two tasks due the dimensionality, as classification with no regard for the temporal relations is a very light computation. Here we utilised both transfer learning and full learning utilising custom CNN architecture.  
 The dataset used for this was comprised of two main sections. Firstly the image dataset found on kaggle.com (https://www.kaggle.com/grassknoted/asl-alphabet), and secondly we generated our own sign language images utilising the openCV module.  
 The largest issue with this dataset was its lack of background and signer diversity dispite our efforts to diversify the data. This lead to suboptimal performance in real world scenarios making transfer learning the best solution due to models being previously trained on ImageNet and having an easier time recognising truely relevant features. 
 
@@ -38,7 +38,7 @@ The pretrained models considered were:
 #### DenseNet201 
 - As a close relative of ResNet with fewer parameters DenseNet was another obvious consideration.
 
-Whilst all models performed compitently in when compared to the validation data we found that ResNet34 was superior in real world translation scenarios. Most model attempts were an initial pass and further finetuning is avalible, yet due to the nature of transfer learning we believe there will be no significant canges in the models rankings.
+Whilst all models performed compitently when compared to the validation data, we found that ResNet34 was superior in real world translation scenarios. Most modelling attempts were an initial pass and further finetuning is available, yet due to the nature of transfer learning we believe there will be no significant changes in ranking of these models.
 
 ### WORD LEVEL:
 
