@@ -50,4 +50,5 @@ Due to the computational intensity of high accuracy video recognition we have op
 
 ## Presentation
 
-You can view the presentation of our findings here: https://www.youtube.com/watch?v=ooL-wb60CFE
+You can view the presentation of our findings here: 
+[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://www.youtube.com/watch?v=ooL-wb60CFE)
