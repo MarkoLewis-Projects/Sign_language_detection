@@ -48,4 +48,6 @@ The presentation of our findings:
 https://www.youtube.com/watch?v=ooL-wb60CFE
 
 
+
+Realtime signing :)
 ![alt text](https://github.com/MarkoLewis-Projects/Sign_language_detection/blob/main/hand_detection_clipped.gif "Resnet34 detection")
