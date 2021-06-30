@@ -42,7 +42,7 @@ Whilst all models performed compitently when compared to the validation data, we
 
 Realtime example:
 
-![alt text](https://github.com/MarkoLewis-Projects/Sign_language_detection/blob/main/hand_detection_clipped.gif=300x300 "Resnet34 detection")
+![alt text](https://github.com/MarkoLewis-Projects/Sign_language_detection/blob/main/hand_detection_clipped.gif "Resnet34 detection")
 
 ### WORD LEVEL:
 
