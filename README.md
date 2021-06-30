@@ -40,17 +40,13 @@ The pretrained models considered were:
 
 Whilst all models performed compitently when compared to the validation data, we found that ResNet34 was superior in real world translation scenarios. Most modelling attempts were an initial pass and further finetuning is available, yet due to the nature of transfer learning we believe there will be no significant changes in ranking of these models.
 
+Realtime signing :)
+
+![alt text](https://github.com/MarkoLewis-Projects/Sign_language_detection/blob/main/hand_detection_clipped.gif "Resnet34 detection")
+
 ### WORD LEVEL:
 
 Due to the computational intensity of high accuracy video recognition we have opted to complete this section at a later date, however preliminary work can be seen through video aquisition/preprocessing in conjunction with preliminary transfer learning attempts with both i3D from deepmind trained with the kinetics 400 dataset (https://arxiv.org/abs/1705.07750), as well as the C3D model which was trained on the Sports1M dataset (https://arxiv.org/abs/1412.0767).
 
 The presentation of our findings:
 https://www.youtube.com/watch?v=ooL-wb60CFE
-
-
-
-Realtime signing :)
-
-
-
-![alt text](https://github.com/MarkoLewis-Projects/Sign_language_detection/blob/main/hand_detection_clipped.gif "Resnet34 detection")
