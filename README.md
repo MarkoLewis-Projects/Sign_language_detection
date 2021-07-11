@@ -4,7 +4,7 @@ Lewis + Marko projects
 Detection algorithm for sign langauge
 
 ## Intro:
-Deafness and sign language are the largest and hardest to overcome language barriers in the modern world. In most cases it isn't feasible to "learn" or even attempt to bridge this gap through self-study. Here we aim to aid in crossing this gap through the creation of a lightweight and truely robust ASL(American Sign-Language) detection model that could take a live feed from a user's camera and translate word and alphabet level sign in real-time to english. The realisation of such a project would surely aid in day to day life in order to connect more people together through seemless conversation.
+Deafness and sign language are the largest and hardest to overcome language barriers in the modern world. In this case it isn't feasible to "learn" or even attempt to bridge this gap through self-study. Here we aim to aid in crossing this gap through the creation of a lightweight and truely robust ASL(American Sign-Language) detection model that could take a live feed from a user's camera and translate word and alphabet level sign in real-time to english. The realisation of such a project would surely aid in day to day life in order to connect more people together through seemless conversation.
 
 The repository itself contains 3 main folders:
 
